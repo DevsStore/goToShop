@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http'
 // Rutas
 import { APP_ROUTES } from './app.routes';
 
@@ -16,6 +16,9 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { PagesComponent } from './pages/pages.component';
 
 
+import { GrupoService } from './services/grupo.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,8 +32,8 @@ import { PagesComponent } from './pages/pages.component';
     FooterComponent,
     PagesComponent
   ],
-  imports: [BrowserModule, APP_ROUTES],
-  providers: [],
+  imports: [BrowserModule, APP_ROUTES,HttpClientModule],
+  providers: [GrupoService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
