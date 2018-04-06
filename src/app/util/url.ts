@@ -1,1 +1,1 @@
-const url = "http://gotoshopec.com/api.php/api/"; 
+const url = 'http://gotoshopec.com/api.php/api/';

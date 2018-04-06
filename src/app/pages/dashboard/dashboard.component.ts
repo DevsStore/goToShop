@@ -8,7 +8,7 @@ import {GrupoService} from '../../services/grupo.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private grupoService:GrupoService) { }
+  constructor(private grupoService: GrupoService) { }
 
   ngOnInit() {
   	this.grupoService.listado().subscribe(

@@ -1,16 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
+
 
 @Injectable()
 export class GrupoService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   //crud
   //read
   //
   listado(){
-  	return this.http.get("http://gotoshopec.com/api.php/api/grupos");
+  	return this.http.get('http://gotoshopec.com/api.php/api/grupos');
+  }
+
+  cargarUsuario() {
+    return this.http.get('http://gotoshopec.com/api.php/api/users');
   }
   //create
   //update
