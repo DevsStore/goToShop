@@ -1,3 +1,4 @@
+import { GruposComponent } from './pages/grupos/grupos.component';
 import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -14,6 +15,7 @@ const appRoutes: Routes = [
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'usuarios', component: UsuariosComponent },
+      { path: 'grupos', component: GruposComponent },
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
     ]
   },

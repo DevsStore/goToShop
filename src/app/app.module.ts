@@ -14,6 +14,7 @@ import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component
 import { FooterComponent } from './shared/footer/footer.component';
 import { PagesComponent } from './pages/pages.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
+import { GruposComponent } from './pages/grupos/grupos.component';
 
 
 import { GrupoService } from './services/grupo.service';
@@ -30,7 +31,8 @@ import { GrupoService } from './services/grupo.service';
     BreadcrumbsComponent,
     FooterComponent,
     PagesComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    GruposComponent
   ],
   imports: [BrowserModule, APP_ROUTES, HttpClientModule],
   providers: [GrupoService],
