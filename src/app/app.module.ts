@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule} from '@angular/forms';
 // Rutas
 import { APP_ROUTES } from './app.routes';
 
@@ -34,7 +35,7 @@ import { GrupoService } from './services/grupo.service';
     UsuariosComponent,
     GruposComponent
   ],
-  imports: [BrowserModule, APP_ROUTES, HttpClientModule],
+  imports: [BrowserModule, APP_ROUTES, HttpClientModule,FormsModule],
   providers: [GrupoService],
   bootstrap: [AppComponent]
 })

@@ -1,26 +1,34 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable()
 export class GrupoService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   //crud
   //read
   //
-  listado(){
-  	return this.http.get('http://gotoshopec.com/api.php/api/grupos');
+  listado() {
+    return this.http.get("http://gotoshopec.com/api.php/api/grupos");
   }
-
+  crear(grupo: any) {
+    return this.http.post(
+      "http://gotoshopec.com/api.php/api/grupos",
+      grupo
+    );
+  }
+  editar(grupo: any) {
+    return this.http.put(
+      "http://gotoshopec.com/api.php/api/grupos/" + grupo.id,
+      grupo
+    );
+  }
   cargarUsuario() {
-    return this.http.get('http://gotoshopec.com/api.php/api/users');
+    return this.http.get("http://gotoshopec.com/api.php/api/users");
   }
   //create
   //update
   //delete
-
 
   //RUTAS
   /*
