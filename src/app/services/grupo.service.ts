@@ -23,6 +23,10 @@ export class GrupoService {
       grupo
     );
   }
+  eliminar(id: number) {
+    return this.http.delete("http://gotoshopec.com/api.php/api/grupos/" + id);
+  }
+
   cargarUsuario() {
     return this.http.get("http://gotoshopec.com/api.php/api/users");
   }
