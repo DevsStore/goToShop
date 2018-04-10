@@ -16,9 +16,14 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { PagesComponent } from './pages/pages.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { GruposComponent } from './pages/grupos/grupos.component';
+import { CategoriasComponent } from './pages/categorias/categorias.component';
+import { LugaresComponent } from './pages/lugares/lugares.component';
+import { EventosComponent } from './pages/eventos/eventos.component';
+import { OfertasComponent } from './pages/ofertas/ofertas.component';
 
 
 import { GrupoService } from './services/grupo.service';
+import { UsuarioService } from "./services/usuario.service";
 
 
 @NgModule({
@@ -33,10 +38,14 @@ import { GrupoService } from './services/grupo.service';
     FooterComponent,
     PagesComponent,
     UsuariosComponent,
-    GruposComponent
+    GruposComponent,
+    CategoriasComponent,
+    LugaresComponent,
+    EventosComponent,
+    OfertasComponent
   ],
-  imports: [BrowserModule, APP_ROUTES, HttpClientModule,FormsModule],
-  providers: [GrupoService],
+  imports: [BrowserModule, APP_ROUTES, HttpClientModule, FormsModule],
+  providers: [GrupoService, UsuarioService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

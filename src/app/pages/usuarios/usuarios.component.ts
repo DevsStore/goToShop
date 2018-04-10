@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GrupoService } from '../../services/grupo.service';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
     selector: 'app-usuarios',
@@ -7,10 +7,11 @@ import { GrupoService } from '../../services/grupo.service';
     styles: []
 })
 export class UsuariosComponent implements OnInit {
-    data: Array<Usuario> = []
+
+  data: Array<Usuario> = [];
 
 
-    constructor(public grupoServices: GrupoService) { }
+    constructor(public usuarioService: UsuarioService) { }
 
     ngOnInit() {
         this.cargarUsuario();
@@ -18,25 +19,25 @@ export class UsuariosComponent implements OnInit {
     }
 
     cargarUsuario() {
-        this.grupoServices.cargarUsuario()
-            .subscribe((resp:any) => {
+        this.usuarioService.cargarUsuario()
+            .subscribe((resp: any) => {
                 //la variable datos se llena con el resultado de la peticion
-                this.data=resp;
+                this.data = resp;
             });
 
     }
 
 }
 //creas la interface, una interface es parecida a un modelo x q basicamente modela el dato, ahora la ventaja es q no usas get ni set
-interface Usuario{
+interface Usuario {
   id: number;
   fullname: string;
-  telefono:string;
-  direccion:string;
-  di:string;
-  email:string;
-  tipo:string;
-  image_url:string;
-  created_at:string;
-  updated_at:string;
+  telefono: string;
+  direccion: string;
+  di: string;
+  email: string;
+  tipo: string;
+  image_url: string;
+  created_at: string;
+  updated_at: string;
 }
