@@ -10,7 +10,7 @@ export class EventoService {
   }
 
   crear(evento: any) {
-    return this.http.post("http://gotoshopec.com/api.php/api/eventos", evento);
+    return this.http.post("http://gotoshopec.com/api.php/api/eventos/", evento);
   }
   editar(evento: any) {
     return this.http.put(

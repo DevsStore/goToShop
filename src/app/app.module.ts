@@ -21,10 +21,11 @@ import { LugaresComponent } from './pages/lugares/lugares.component';
 import { EventosComponent } from './pages/eventos/eventos.component';
 import { OfertasComponent } from './pages/ofertas/ofertas.component';
 
-
+// Servicios
 import { GrupoService } from './services/grupo.service';
 import { UsuarioService } from "./services/usuario.service";
 import { CategoriaService } from "./services/categoria.service";
+import { LugarService } from './services/lugar.service';
 
 
 @NgModule({
@@ -46,7 +47,7 @@ import { CategoriaService } from "./services/categoria.service";
     OfertasComponent
   ],
   imports: [BrowserModule, APP_ROUTES, HttpClientModule, FormsModule],
-  providers: [GrupoService, UsuarioService, CategoriaService],
+  providers: [GrupoService, UsuarioService, CategoriaService, LugarService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
