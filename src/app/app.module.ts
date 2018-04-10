@@ -24,6 +24,7 @@ import { OfertasComponent } from './pages/ofertas/ofertas.component';
 
 import { GrupoService } from './services/grupo.service';
 import { UsuarioService } from "./services/usuario.service";
+import { CategoriaService } from "./services/categoria.service";
 
 
 @NgModule({
@@ -45,7 +46,7 @@ import { UsuarioService } from "./services/usuario.service";
     OfertasComponent
   ],
   imports: [BrowserModule, APP_ROUTES, HttpClientModule, FormsModule],
-  providers: [GrupoService, UsuarioService],
+  providers: [GrupoService, UsuarioService, CategoriaService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
