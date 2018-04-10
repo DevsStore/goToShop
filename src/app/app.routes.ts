@@ -17,14 +17,42 @@ const appRoutes: Routes = [
     path: "",
     component: PagesComponent,
     children: [
-      { path: "dashboard", component: DashboardComponent },
-      { path: "usuarios", component: UsuariosComponent },
-      { path: "grupos", component: GruposComponent },
-      { path: "lugares", component: LugaresComponent },
-      { path: "eventos", component: EventosComponent },
-      { path: "ofertas", component: OfertasComponent },
-      { path: "categorias", component: CategoriasComponent },
-      { path: "", redirectTo: "/dashboard", pathMatch: "full" }
+      {
+        path: "dashboard",
+        component: DashboardComponent,
+        data: { titulo: "Dashboard" }
+      },
+      {
+        path: "usuarios",
+        component: UsuariosComponent,
+        data: { titulo: "Usuarios" }
+      },
+      {
+        path: "grupos",
+        component: GruposComponent,
+        data: { titulo: "Grupos" }
+      },
+      {
+        path: "lugares",
+        component: LugaresComponent,
+        data: { titulo: "Lugares" }
+      },
+      {
+        path: "eventos",
+        component: EventosComponent,
+        data: { titulo: "Eventos" }
+      },
+      {
+        path: "ofertas",
+        component: OfertasComponent,
+        data: { titulo: "Ofertas" }
+      },
+      {
+        path: "categorias",
+        component: CategoriasComponent,
+        data: { titulo: "Categorias" }
+      },
+      { path: "", redirectTo: "/usuarios", pathMatch: "full" }
     ]
   },
   { path: "login", component: LoginComponent },
