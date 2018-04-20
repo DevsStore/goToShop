@@ -30,7 +30,7 @@ export class EventosComponent implements OnInit {
     fecha_inicio: "",
     fecha_fin: "",
     lat: 0,
-    logn: 0,
+    lon: 0,
     ubicacion: "",
     created_at: "",
     updated_at: "",
@@ -44,7 +44,7 @@ export class EventosComponent implements OnInit {
     fecha_inicio: "",
     fecha_fin: "",
     lat: 0,
-    logn: 0,
+    lon: 0,
     ubicacion: "",
     created_at: "",
     updated_at: "",
@@ -91,7 +91,7 @@ interface Evento {
   fecha_inicio: string;
   fecha_fin: string;
   lat: number;
-  logn: number;
+  lon: number;
   ubicacion: string;
   created_at: string;
   updated_at: string;

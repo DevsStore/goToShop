@@ -28,12 +28,13 @@ export class LugaresComponent implements OnInit {
     razon_social: "",
     descripcion: "",
     lat: 0,
-    long: 0,
+    lon: 0,
     telefono: 0,
     horario_apertura: "",
     horario_cierre: "",
     redes: "",
     direccion: "",
+    ubicacion: "",
     image_url: "",
     created_at: "",
     updated_at: "",
@@ -45,12 +46,13 @@ export class LugaresComponent implements OnInit {
     razon_social: "",
     descripcion: "",
     lat: 0,
-    long: 0,
+    lon: 0,
     telefono: 0,
     horario_apertura: "",
     horario_cierre: "",
     redes: "",
     direccion: "",
+    ubicacion: "",
     image_url: "",
     created_at: "",
     updated_at: "",
@@ -96,12 +98,13 @@ interface Lugar {
   razon_social: string;
   descripcion: string;
   lat: number;
-  long: number;
+  lon: number;
   telefono: number;
   horario_apertura: string;
   horario_cierre: string;
   redes: string;
   direccion: string;
+  ubicacion: string;
   image_url: string;
   created_at: string;
   updated_at: string;
