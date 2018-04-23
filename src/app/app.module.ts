@@ -20,12 +20,14 @@ import { CategoriasComponent } from './pages/categorias/categorias.component';
 import { LugaresComponent } from './pages/lugares/lugares.component';
 import { EventosComponent } from './pages/eventos/eventos.component';
 import { OfertasComponent } from './pages/ofertas/ofertas.component';
+import { AjustetemaComponent } from './pages/ajustetema/ajustetema.component';
 
 // Servicios
 import { GrupoService } from './services/grupo.service';
 import { UsuarioService } from "./services/usuario.service";
 import { CategoriaService } from "./services/categoria.service";
 import { LugarService } from './services/lugar.service';
+import { SettingsService } from './services/settings.service';
 
 
 @NgModule({
@@ -44,10 +46,11 @@ import { LugarService } from './services/lugar.service';
     CategoriasComponent,
     LugaresComponent,
     EventosComponent,
-    OfertasComponent
+    OfertasComponent,
+    AjustetemaComponent
   ],
   imports: [BrowserModule, APP_ROUTES, HttpClientModule, FormsModule],
-  providers: [GrupoService, UsuarioService, CategoriaService, LugarService],
+  providers: [GrupoService, UsuarioService, CategoriaService, LugarService, SettingsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

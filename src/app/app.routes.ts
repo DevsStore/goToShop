@@ -1,4 +1,3 @@
-import { GruposComponent } from './pages/grupos/grupos.component';
 import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -10,6 +9,8 @@ import { CategoriasComponent } from './pages/categorias/categorias.component';
 import { LugaresComponent } from './pages/lugares/lugares.component';
 import { EventosComponent } from './pages/eventos/eventos.component';
 import { OfertasComponent } from './pages/ofertas/ofertas.component';
+import { GruposComponent } from './pages/grupos/grupos.component';
+import { AjustetemaComponent } from './pages/ajustetema/ajustetema.component';
 
 
 const appRoutes: Routes = [
@@ -52,6 +53,12 @@ const appRoutes: Routes = [
         component: CategoriasComponent,
         data: { titulo: "Categorias" }
       },
+      {
+        path: "ajuste",
+        component: AjustetemaComponent,
+        data: { titulo: "Ajustes de Tema"}
+      },
+
       { path: "", redirectTo: "/usuarios", pathMatch: "full" }
     ]
   },
