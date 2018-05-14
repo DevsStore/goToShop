@@ -8,7 +8,9 @@ export class CategoriaService {
   loadCategoria() {
     return this.http.get("http://gotoshopec.com/api.php/api/categorias");
   }
-
+  filterCategoria(id) {
+    return this.http.get("http://www.gotoshopec.com/api.php/api/lugares/"+id);
+  }
   crear(categoria: any) {
     return this.http.post("http://gotoshopec.com/api.php/api/categorias", categoria);
   }

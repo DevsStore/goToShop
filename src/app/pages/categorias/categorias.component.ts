@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriaService } from '../../services/categoria.service';
 import { GrupoService } from './../../services/grupo.service';
+import {Router, RouterLinkActive} from "@angular/router";
 
 
 @Component({
@@ -42,7 +43,8 @@ export class CategoriasComponent implements OnInit {
   };
 
   constructor(private categoriaService: CategoriaService,
-              private grupoService: GrupoService) {}
+              private grupoService: GrupoService,
+              private route:Router) {}
 
   ngOnInit() {
     this.loadCategoria();
@@ -84,6 +86,10 @@ export class CategoriasComponent implements OnInit {
         alert("Upss tenemos problemas de comunicación");
       }
     );
+  }
+
+  goToPage(id: number) {
+    this.route.navigate(["/categoria/"+id])
   }
 }
 

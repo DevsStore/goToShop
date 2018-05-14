@@ -11,7 +11,7 @@
                 <!-- Row -->
                 <div class="row">
                     <!-- column -->
-                    <div class="col-lg-3 col-md-6" *ngFor="let item of data" style="margin-bottom: 1rem">
+                    <div class="col-lg-4 col-md-6" *ngFor="let item of data" style="margin-bottom: 1rem">
                         <!-- Card -->
                         <div class="card" style="height: 100%">
                             <div>
@@ -33,8 +33,12 @@
 
                                 <p class="card-text">Descripcion
                                     <br/>
-                                    <span class="text-muted">{{item.descripcion}}</span>
+                                    <span class="text-muted" >{{item.descripcion}}</span>
                                 </p>
+                              <p class="card-text">CUPON
+                                <br/>
+                                <span class="text-muted" style="color:tomato !important;font-weight: bold">{{item.cupon}}</span>
+                              </p>
                                 <p class="card-text">Precio Regular
                                     <br/>
                                     <span class="text-muted">{{item.precio_regular}}</span>

@@ -11,6 +11,8 @@ import { EventosComponent } from './pages/eventos/eventos.component';
 import { OfertasComponent } from './pages/ofertas/ofertas.component';
 import { GruposComponent } from './pages/grupos/grupos.component';
 import { AjustetemaComponent } from './pages/ajustetema/ajustetema.component';
+import {GrupocategoriasComponent} from "./pages/grupocategorias/grupocategorias.component";
+import {CategorialugaresComponent} from "./pages/categorialugares/categorialugares.component";
 
 
 const appRoutes: Routes = [
@@ -34,8 +36,18 @@ const appRoutes: Routes = [
         data: { titulo: "Grupos" }
       },
       {
+        path: "grupo/:id",
+        component: GrupocategoriasComponent,
+        data: { titulo: "Grupo" }
+      },
+      {
         path: "lugares",
         component: LugaresComponent,
+        data: { titulo: "Lugares" }
+      },
+      {
+        path: "categoria/:id",
+        component: CategorialugaresComponent,
         data: { titulo: "Lugares" }
       },
       {

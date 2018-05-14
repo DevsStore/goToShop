@@ -9,6 +9,9 @@ export class GrupoService {
   listado() {
     return this.http.get("http://gotoshopec.com/api.php/api/grupos");
   }
+  filtroID(id) {
+    return this.http.get("http://gotoshopec.com/api.php/api/categorias/"+id);
+  }
 
   crear(grupo: any) {
     return this.http.post(

@@ -28,6 +28,8 @@ import { UsuarioService } from "./services/usuario.service";
 import { CategoriaService } from "./services/categoria.service";
 import { LugarService } from './services/lugar.service';
 import { SettingsService } from './services/settings.service';
+import { GrupocategoriasComponent } from './pages/grupocategorias/grupocategorias.component';
+import { CategorialugaresComponent } from './pages/categorialugares/categorialugares.component';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { SettingsService } from './services/settings.service';
     LugaresComponent,
     EventosComponent,
     OfertasComponent,
-    AjustetemaComponent
+    AjustetemaComponent,
+    GrupocategoriasComponent,
+    CategorialugaresComponent
   ],
   imports: [BrowserModule, APP_ROUTES, HttpClientModule, FormsModule],
   providers: [GrupoService, UsuarioService, CategoriaService, LugarService, SettingsService],

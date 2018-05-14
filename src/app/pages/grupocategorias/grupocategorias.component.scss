@@ -1,0 +1,9 @@
+.my-btn{
+  border:none;
+  background:rgba(200,200,200,.5);
+  transition: all .3s;
+  cursor:pointer;
+}
+.my-btn:hover{
+  background:rgba(255,255,255,1);
+}

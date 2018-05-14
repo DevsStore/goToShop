@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { GrupoService } from "../../services/grupo.service";
+import {Router} from "@angular/router";
 @Component({
   selector: "app-grupos",
   templateUrl: "./grupos.component.html",
@@ -36,7 +37,7 @@ export class GruposComponent implements OnInit {
     updated_at: "",
     deleted_at: ""
   };
-  constructor(private gruposService: GrupoService) {}
+  constructor(private gruposService: GrupoService,private router:Router) {}
 
   ngOnInit() {
     this.loadGrupos();
@@ -64,6 +65,10 @@ export class GruposComponent implements OnInit {
         alert("Upss tenemos problemas de comunicación");
       }
     );
+  }
+
+  GoToPage(id: number) {
+    this.router.navigate(['/grupo/'+id]);
   }
 }
 interface Grupo {
