@@ -60,6 +60,9 @@
             </div>
             <div class="modal-body">
                 <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="edit.nombre">
+                <select class="form-control" [(ngModel)]="edit.grupo_id">
+                  <option *ngFor="let grupo of grupos" [value]="grupo.id" >{{grupo.nombre}}</option>
+                </select>
                 <input type="text" class="form-control" placeholder="Url Imagen" [(ngModel)]="edit.image_url">
                 <div *ngIf="edit.image_url?.length >=1">
                     <img src="{{edit.image_url}}" class="card-img-top img-responsive" alt="imagen de la {{edit.nombre}}">
@@ -83,6 +86,9 @@
             </div>
             <div class="modal-body">
                 <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="create.nombre">
+                <select class="form-control" [(ngModel)]="create.grupo_id">
+                  <option *ngFor="let grupo of grupos" [value]="grupo.id" >{{grupo.nombre}}</option>
+                </select>
                 <input type="text" class="form-control" placeholder="Url Imagen" [(ngModel)]="create.image_url">
                 <div *ngIf="create.image_url != ''">
                     <img src="{{create.image_url}}" class="card-img-top img-responsive" alt="imagen de la {{create.nombre}}">

@@ -36,7 +36,7 @@ export class EventosComponent implements OnInit {
     updated_at: "",
     deleted_at: ""
   };
-  create: Evento = {
+  create: any = {
     id: 0,
     nombre: "",
     descripcion: "",

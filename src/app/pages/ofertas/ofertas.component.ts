@@ -39,9 +39,10 @@ export class OfertasComponent implements OnInit {
     updated_at: "",
     deleted_at: "",
     lat: 0,
-    lon: 0
+    lon: 0,
+    cupon: ""
   };
-  create: Oferta = {
+  create: any = {
     id: 0,
     lugar_id: 0,
     producto: "",
@@ -57,7 +58,8 @@ export class OfertasComponent implements OnInit {
     updated_at: "",
     deleted_at: "",
     lat: 0,
-    lon: 0
+    lon: 0,
+    cupon: ""
   };
 
   constructor(private ofertaService: OfertaService) {}
@@ -110,4 +112,5 @@ interface Oferta {
   deleted_at: string;
   lat: number;
   lon: number;
+  cupon: string;
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriaService } from '../../services/categoria.service';
+import { GrupoService } from './../../services/grupo.service';
 
 
 @Component({
@@ -18,35 +19,46 @@ import { CategoriaService } from '../../services/categoria.service';
     }
   `
   ],
-  providers: [CategoriaService]
+  providers: [CategoriaService, GrupoService]
 })
 export class CategoriasComponent implements OnInit {
   data: Array<Categoria> = [];
 
+  grupos: any;
+
   edit: Categoria = {
     id: 0,
     nombre: "",
-    grupo_id: 0,
+    grupo_id: "",
     image_url: "",
     created_at: "",
     updated_at: "",
     deleted_at: ""
   };
-  create: Categoria = {
-    id: 0,
+  create: any = {
     nombre: "",
-    grupo_id: 0,
-    image_url: "",
-    created_at: "",
-    updated_at: "",
-    deleted_at: ""
+    grupo_id: "",
+    image_url: ""
   };
 
-  constructor(private categoriaService: CategoriaService) {}
+  constructor(private categoriaService: CategoriaService,
+              private grupoService: GrupoService) {}
 
   ngOnInit() {
     this.loadCategoria();
+    this.loadGrupos();
   }
+
+  loadGrupos() {
+    this.grupoService.listado().subscribe(
+      (res: any) => {
+        this.grupos = res;
+      },
+      error => {
+        alert("Upss tenemos problemas de comunicación");
+      }
+    );
+}
 
   loadCategoria() {
     this.categoriaService.loadCategoria().subscribe(
@@ -80,7 +92,7 @@ export class CategoriasComponent implements OnInit {
 interface Categoria {
   id: number;
   nombre: string;
-  grupo_id: number;
+  grupo_id: string;
   image_url: string;
   created_at: string;
   updated_at: string;
