@@ -7,7 +7,7 @@ export class ImagenService {
 
 
 subir(subirImagen: any) {
-    return this.http.post("http://gotoshopec.com/api.php/api/subirImagen", subirImagen);
+    return this.http.post("http://gotoshopec.com/api.php/api/subirimagen", subirImagen);
   }
 
 

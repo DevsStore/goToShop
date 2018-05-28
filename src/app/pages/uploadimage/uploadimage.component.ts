@@ -13,7 +13,7 @@ export class UploadimageComponent implements OnInit {
   public filesToUpload: Array<File>;
   frmUploadFotoUm: FormGroup;
   progressStatus = 0;
-  img: string = "";
+  img = "";
   private imagen: any;
 
   constructor(private http: HttpClient) {
@@ -21,10 +21,6 @@ export class UploadimageComponent implements OnInit {
       firstName: new FormControl()
     });
   }
-
-  ngOnInit() {
-  }
-
   filesChangeEvent() {
 
     let data = new FormData();
@@ -35,7 +31,7 @@ export class UploadimageComponent implements OnInit {
 
     this.http.post('http://localhost:8000/subirimagen', data)
       .subscribe((response: any) => {
-        console.log(response)
+        console.log(response);
         this.img = response.url;
       });
   }
@@ -43,5 +39,8 @@ export class UploadimageComponent implements OnInit {
 
   getImage(event) {
     this.imagen = event.target.files[0];
+  }
+
+  ngOnInit(): void {
   }
 }
