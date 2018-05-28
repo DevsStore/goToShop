@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { reject } from 'q';
+
 
 @Component({
   selector: 'app-uploadimage',
@@ -18,7 +18,7 @@ export class UploadimageComponent implements OnInit {
   filesChangeEvent( fileInput: any ) {
       this.filesToUpload = <Array<File>>fileInput.target.files;
 
-      this.makeFileRequest("http://gotoshopec.com/api.php/api/subirImagen", [], this.filesToUpload).then((result) => {
+      this.makeFileRequest("http://gotoshopec.com/api.php/api/subirimagen", [], this.filesToUpload).then((result) => {
 
       });
   }
