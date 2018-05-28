@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 // Rutas
 import { APP_ROUTES } from './app.routes';
 
@@ -56,7 +56,7 @@ import { ImagenService } from './services/imagen.service';
     CategorialugaresComponent,
     UploadimageComponent
   ],
-  imports: [BrowserModule, APP_ROUTES, HttpClientModule, FormsModule],
+  imports: [BrowserModule, APP_ROUTES, HttpClientModule, FormsModule,ReactiveFormsModule],
   providers: [
     GrupoService,
     UsuarioService,

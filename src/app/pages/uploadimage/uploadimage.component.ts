@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { reject } from 'q';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {FormControl, FormGroup} from "@angular/forms";
+
 
 @Component({
   selector: 'app-uploadimage',
@@ -9,44 +11,37 @@ import { reject } from 'q';
 export class UploadimageComponent implements OnInit {
 
   public filesToUpload: Array<File>;
+  frmUploadFotoUm: FormGroup;
+  progressStatus = 0;
+  img: string = "";
+  private imagen: any;
 
-  constructor() { }
+  constructor(private http: HttpClient) {
+    this.frmUploadFotoUm = new FormGroup({
+      firstName: new FormControl()
+    });
+  }
 
   ngOnInit() {
   }
 
-  filesChangeEvent( fileInput: any ) {
-      this.filesToUpload = <Array<File>>fileInput.target.files;
+  filesChangeEvent() {
 
-      this.makeFileRequest("http://gotoshopec.com/api.php/api/subirImagen", [], this.filesToUpload).then((result) => {
+    let data = new FormData();
 
+    data.append('file', this.imagen);
+
+    data.append('_method', 'POST');
+
+    this.http.post('http://localhost:8000/subirimagen', data)
+      .subscribe((response: any) => {
+        console.log(response)
+        this.img = response.url;
       });
   }
 
 
-  makeFileRequest( url: string, params: Array<string>, files: Array<File> ) {
-      return new Promise(( resolve, reject ) => {
-          var formData: any = new FormData();
-          var xhr = new XMLHttpRequest();
-
-          for ( var i = 0; i < files.length; i++ ) {
-            formData.append("uploads[]", files[i], files[i].name);
-          }
-
-
-          xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-              if (xhr.status === 200) {
-                  resolve(JSON.parse(xhr.response));
-              } else {
-                reject(xhr.response);
-              }
-            }
-          };
-
-          xhr.open("POST", url, true);
-          xhr.send(formData);
-      });
+  getImage(event) {
+    this.imagen = event.target.files[0];
   }
-
 }
