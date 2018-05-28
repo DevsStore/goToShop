@@ -13,6 +13,7 @@ import { GruposComponent } from './pages/grupos/grupos.component';
 import { AjustetemaComponent } from './pages/ajustetema/ajustetema.component';
 import {GrupocategoriasComponent} from "./pages/grupocategorias/grupocategorias.component";
 import {CategorialugaresComponent} from "./pages/categorialugares/categorialugares.component";
+import { UploadimageComponent } from './pages/uploadimage/uploadimage.component';
 
 
 const appRoutes: Routes = [
@@ -69,6 +70,11 @@ const appRoutes: Routes = [
         path: "ajuste",
         component: AjustetemaComponent,
         data: { titulo: "Ajustes de Tema"}
+      },
+      {
+        path: "subirImagen",
+        component: UploadimageComponent,
+        data: { titulo: "Subir Imagen"}
       },
 
       { path: "", redirectTo: "/usuarios", pathMatch: "full" }

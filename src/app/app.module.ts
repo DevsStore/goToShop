@@ -21,6 +21,9 @@ import { LugaresComponent } from './pages/lugares/lugares.component';
 import { EventosComponent } from './pages/eventos/eventos.component';
 import { OfertasComponent } from './pages/ofertas/ofertas.component';
 import { AjustetemaComponent } from './pages/ajustetema/ajustetema.component';
+import { UploadimageComponent } from './pages/uploadimage/uploadimage.component';
+import { CategorialugaresComponent } from './pages/categorialugares/categorialugares.component';
+import { GrupocategoriasComponent } from './pages/grupocategorias/grupocategorias.component';
 
 // Servicios
 import { GrupoService } from './services/grupo.service';
@@ -28,8 +31,7 @@ import { UsuarioService } from "./services/usuario.service";
 import { CategoriaService } from "./services/categoria.service";
 import { LugarService } from './services/lugar.service';
 import { SettingsService } from './services/settings.service';
-import { GrupocategoriasComponent } from './pages/grupocategorias/grupocategorias.component';
-import { CategorialugaresComponent } from './pages/categorialugares/categorialugares.component';
+import { ImagenService } from './services/imagen.service';
 
 
 @NgModule({
@@ -51,10 +53,18 @@ import { CategorialugaresComponent } from './pages/categorialugares/categorialug
     OfertasComponent,
     AjustetemaComponent,
     GrupocategoriasComponent,
-    CategorialugaresComponent
+    CategorialugaresComponent,
+    UploadimageComponent
   ],
   imports: [BrowserModule, APP_ROUTES, HttpClientModule, FormsModule],
-  providers: [GrupoService, UsuarioService, CategoriaService, LugarService, SettingsService],
+  providers: [
+    GrupoService,
+    UsuarioService,
+    CategoriaService,
+    LugarService,
+    SettingsService,
+    ImagenService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

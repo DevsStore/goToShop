@@ -44,7 +44,7 @@ export class CategoriasComponent implements OnInit {
 
   constructor(private categoriaService: CategoriaService,
               private grupoService: GrupoService,
-              private route:Router) {}
+              private route: Router) {}
 
   ngOnInit() {
     this.loadCategoria();

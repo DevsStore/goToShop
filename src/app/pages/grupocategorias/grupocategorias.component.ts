@@ -29,7 +29,7 @@ export class GrupocategoriasComponent implements OnInit {
   };
 
   constructor(private categoriaService: CategoriaService,
-              private grupoService: GrupoService,private route:ActivatedRoute,private router:Router) {
+              private grupoService: GrupoService, private route: ActivatedRoute, private router: Router) {
 
 
 
@@ -67,7 +67,7 @@ export class GrupocategoriasComponent implements OnInit {
     this.edit = item;
   }
   GoToPage(id: number) {
-    this.router.navigate(['/categoria/'+id]);
+    this.router.navigate(['/categoria/' + id]);
   }
 }
 
