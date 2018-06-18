@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriaService } from '../../services/categoria.service';
-import { GrupoService } from './../../services/grupo.service';
+import { GrupoService } from '../../services/grupo.service';
 import {Router, RouterLinkActive} from "@angular/router";
 
 
@@ -89,7 +89,7 @@ export class CategoriasComponent implements OnInit {
   }
 
   goToPage(id: number) {
-    this.route.navigate(["/categoria/"+id])
+    this.route.navigate(["/categoria/" + id]);
   }
 }
 

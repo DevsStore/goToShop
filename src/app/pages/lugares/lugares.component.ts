@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { LugarService } from './../../services/lugar.service';
+import { LugarService } from '../../services/lugar.service';
+import {CategoriaService} from "../../services/categoria.service";
+
+import {Router, RouterLinkActive} from "@angular/router";
+
 
 @Component({
   selector: "app-lugares",
@@ -17,14 +21,16 @@ import { LugarService } from './../../services/lugar.service';
     }
   `
   ],
-  providers: [LugarService]
+  providers: [LugarService, CategoriaService]
 })
 export class LugaresComponent implements OnInit {
+
   data: Array<Lugar> = [];
+  categorias: any;
 
   edit: Lugar = {
     id: 0,
-    categoria_id: 0,
+    categoria_id: "",
     razon_social: "",
     descripcion: "",
     lat: 0,
@@ -42,7 +48,7 @@ export class LugaresComponent implements OnInit {
   };
   create: Lugar = {
     id: 0,
-    categoria_id: 0,
+    categoria_id: "",
     razon_social: "",
     descripcion: "",
     lat: 0,
@@ -59,15 +65,26 @@ export class LugaresComponent implements OnInit {
     deleted_at: ""
   };
 
-  constructor(private lugarService: LugarService) {}
+  constructor(private lugarService: LugarService, private categoriaService: CategoriaService, private route: Router) {}
 
   ngOnInit() {
     this.loadLugares();
+    this.loadCategoria();
   }
 
   loadLugares() {
     this.lugarService.listado().subscribe(
       (res: Array<Lugar>) => {
+        this.data = res;
+      },
+      error => {
+        alert("Upss tenemos problemas de comunicación");
+      }
+    );
+  }
+  loadCategoria() {
+    this.categoriaService.loadCategoria().subscribe(
+      (res: any) => {
         this.data = res;
       },
       error => {
@@ -89,12 +106,15 @@ export class LugaresComponent implements OnInit {
       }
     );
   }
+  goToPage(id: number) {
+    this.route.navigate(["/categoria/" + id]);
+  }
 }
 
 
 interface Lugar {
   id: number;
-  categoria_id: number;
+  categoria_id: string;
   razon_social: string;
   descripcion: string;
   lat: number;

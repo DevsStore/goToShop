@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CategoriaService} from "../../services/categoria.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {LugarService} from "../../services/lugar.service";
 
 
@@ -8,14 +8,15 @@ import {LugarService} from "../../services/lugar.service";
   selector: 'app-categorialugares',
   templateUrl: './categorialugares.component.html',
   styleUrls: ['./categorialugares.component.scss'],
-  providers: [CategoriaService,LugarService]
+  providers: [CategoriaService, LugarService]
 })
 export class CategorialugaresComponent implements OnInit {
   data: Array<Lugar> = [];
+  categorias: any;
 
   edit: Lugar = {
     id: 0,
-    categoria_id: 0,
+    categoria_id: "",
     razon_social: "",
     descripcion: "",
     lat: 0,
@@ -33,7 +34,7 @@ export class CategorialugaresComponent implements OnInit {
   };
   create: Lugar = {
     id: 0,
-    categoria_id: 0,
+    categoria_id: "",
     razon_social: "",
     descripcion: "",
     lat: 0,
@@ -50,7 +51,10 @@ export class CategorialugaresComponent implements OnInit {
     deleted_at: ""
   };
 
-  constructor(private categoriaService: CategoriaService,private route:ActivatedRoute,private lugarService:LugarService) {}
+  constructor(private categoriaService: CategoriaService,
+              private route: ActivatedRoute,
+              private router: Router,
+              private lugarService: LugarService) {}
 
   ngOnInit() {
     this.loadLugares();
@@ -84,12 +88,15 @@ export class CategorialugaresComponent implements OnInit {
       }
     );
   }
+  GoToPage(id: number) {
+    this.router.navigate(['/categoria/' + id]);
+  }
 }
 
 
 interface Lugar {
   id: number;
-  categoria_id: number;
+  categoria_id: string;
   razon_social: string;
   descripcion: string;
   lat: number;

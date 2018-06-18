@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { OfertaService } from './../../services/oferta.service';
+import { OfertaService } from '../../services/oferta.service';
+import {LugarService} from "../../services/lugar.service";
 
 
 
@@ -19,13 +20,14 @@ import { OfertaService } from './../../services/oferta.service';
     }
   `
   ],
-  providers: [OfertaService]
+  providers: [OfertaService, LugarService]
 })
 export class OfertasComponent implements OnInit {
   data: Array<Oferta> = [];
+  lugares: any;
   edit: Oferta = {
     id: 0,
-    lugar_id: 0,
+    lugar_id: "",
     producto: "",
     descripcion: "",
     precio_regular: 0,
@@ -44,7 +46,7 @@ export class OfertasComponent implements OnInit {
   };
   create: any = {
     id: 0,
-    lugar_id: 0,
+    lugar_id: "",
     producto: "",
     descripcion: "",
     precio_regular: 0,
@@ -66,7 +68,7 @@ export class OfertasComponent implements OnInit {
 
   ngOnInit() {
     this.loadOfertas();
-  }
+}
 
   loadOfertas() {
     this.ofertaService.listado().subscribe(
@@ -97,7 +99,7 @@ export class OfertasComponent implements OnInit {
 
 interface Oferta {
   id: number;
-  lugar_id: number;
+  lugar_id: string;
   producto: string;
   descripcion: string;
   precio_regular: number;

@@ -22,6 +22,10 @@
               </div>
               <div class="card-body">
                 <h4 class="card-title">{{item.razon_social}}</h4>
+                <p class="card-text">Categoria
+                  <br/>
+                  <span class="text-muted">{{item.categoria_id}}</span>
+                </p>
                 <p class="card-text">Descripcion
                   <br/>
                   <span class="text-muted">{{item.descripcion}}</span>
@@ -63,7 +67,7 @@
 
               </div>
               <div class="card-footer">
-                <a href="#" class="btn btn-primary btn-block">Mostrar más</a>
+                <a (click)="GoToPage(item.id)" class="btn btn-primary btn-block">Mostrar más</a>
               </div>
             </div>
             <!-- Card -->
@@ -79,21 +83,24 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Edit</h5>
+        <h5 class="modal-title">Editar</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="edit.razon_social">
+        <select class="form-control" [(ngModel)]="edit.categoria_id">
+          <option *ngFor="let categoria of categorias" [value]="categoria.id" >{{categoria.nombre}}</option>
+        </select>
         <input type="text" class="form-control" placeholder="Url Imagen" [(ngModel)]="edit.image_url">
         <div *ngIf="edit.image_url?.length >=1">
           <img src="{{edit.image_url}}" class="card-img-top img-responsive" alt="imagen de la {{edit.razon_social}}">
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Guardar</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="savelugar()" data-dismiss="modal">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -102,13 +109,16 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Edit</h5>
+        <h5 class="modal-title">Crear</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="create.razon_social">
+        <select class="form-control" [(ngModel)]="create.categoria_id">
+          <option *ngFor="let categoria of categorias" [value]="categoria.id" >{{categoria.nombre}}</option>
+        </select>
         <input type="text" class="form-control" placeholder="Url Imagen" [(ngModel)]="create.image_url">
         <div *ngIf="create.image_url != ''">
           <img src="{{create.image_url}}" class="card-img-top img-responsive" alt="imagen de la {{create.razon_social}}">

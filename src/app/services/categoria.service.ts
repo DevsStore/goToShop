@@ -9,7 +9,7 @@ export class CategoriaService {
     return this.http.get("http://gotoshopec.com/api.php/api/categorias");
   }
   filterCategoria(id) {
-    return this.http.get("http://www.gotoshopec.com/api.php/api/lugares/"+id);
+    return this.http.get("http://www.gotoshopec.com/api.php/api/lugares/" + id);
   }
   crear(categoria: any) {
     return this.http.post("http://gotoshopec.com/api.php/api/categorias", categoria);
@@ -17,9 +17,7 @@ export class CategoriaService {
 
   editar(categoria: any) {
     return this.http.put(
-      "http://gotoshopec.com/api.php/api/categorias/" + categoria.id,
-      categoria
-    );
+      "http://gotoshopec.com/api.php/api/categorias/" + categoria.id, categoria);
   }
 
   eliminar(id: number) {

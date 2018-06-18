@@ -8,7 +8,6 @@ export class LugarService {
   listado() {
     return this.http.get("http://gotoshopec.com/api.php/api/lugares");
   }
-
   crear(lugar: any) {
     return this.http.post("http://gotoshopec.com/api.php/api/lugares", lugar);
   }

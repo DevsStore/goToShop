@@ -10,7 +10,7 @@ export class GrupoService {
     return this.http.get("http://gotoshopec.com/api.php/api/grupos");
   }
   filtroID(id) {
-    return this.http.get("http://gotoshopec.com/api.php/api/categorias/"+id);
+    return this.http.get("http://gotoshopec.com/api.php/api/categorias/" + id);
   }
 
   crear(grupo: any) {

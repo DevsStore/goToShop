@@ -56,7 +56,7 @@ import { ImagenService } from './services/imagen.service';
     CategorialugaresComponent,
     UploadimageComponent
   ],
-  imports: [BrowserModule, APP_ROUTES, HttpClientModule, FormsModule,ReactiveFormsModule],
+  imports: [BrowserModule, APP_ROUTES, HttpClientModule, FormsModule, ReactiveFormsModule],
   providers: [
     GrupoService,
     UsuarioService,
