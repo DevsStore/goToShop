@@ -85,7 +85,7 @@ export class LugaresComponent implements OnInit {
   loadCategoria() {
     this.categoriaService.loadCategoria().subscribe(
       (res: any) => {
-        this.data = res;
+        this.categorias = res;
       },
       error => {
         alert("Upss tenemos problemas de comunicación");
