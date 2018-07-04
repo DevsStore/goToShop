@@ -1,12 +1,14 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {FormControl, FormGroup} from "@angular/forms";
+import {LugarService} from "../../services/lugar.service";
 
 
 @Component({
   selector: 'app-uploadimage',
   templateUrl: './uploadimage.component.html',
-  styles: []
+  styles: [],
+  providers: [LugarService]
 })
 export class UploadimageComponent implements OnInit {
 
@@ -14,18 +16,30 @@ export class UploadimageComponent implements OnInit {
   frmUploadFotoUm: FormGroup;
   progressStatus = 0;
   img = "";
-  private imagen: any;
+   imagen: any;
+   nombre: string;
+   lugar: string;
+  lugares: any = [];
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private lugaresService: LugarService) {
     this.frmUploadFotoUm = new FormGroup({
       firstName: new FormControl()
     });
   }
+
+  loadLugares() {
+    this.lugaresService.listado().subscribe((res: any) => {
+      this.lugares = res;
+    });
+  }
+
   filesChangeEvent() {
 
     let data = new FormData();
 
     data.append('file', this.imagen);
+    data.append('lugar', this.lugar);
+    data.append('nombre', this.nombre);
 
     data.append('_method', 'POST');
 
@@ -42,5 +56,7 @@ export class UploadimageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadLugares();
   }
+
 }

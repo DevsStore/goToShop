@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import {Myurl} from "./myurl";
 
 @Injectable()
 export class ImagenService {
@@ -7,7 +8,7 @@ export class ImagenService {
 
 
 subir(subirImagen: any) {
-    return this.http.post("http://gotoshopec.com/api.php/api/subirimagen", subirImagen);
+    return this.http.post(new Myurl().url + "subirimagen", subirImagen);
   }
 
 

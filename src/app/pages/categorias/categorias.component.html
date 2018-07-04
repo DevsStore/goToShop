@@ -19,6 +19,9 @@
                                 <div style="position: absolute;right: 0;top: 0">
                                     <button class="my-btn" (click)="OpenModalEdit(item)" data-toggle="modal" data-target="#modalEdit">Edit</button>
                                 </div>
+                              <div style="position: absolute;left: 0;top: 0">
+                                <button class="my-btn-delete" (click)="DeleteItem(item.id)">Delete</button>
+                              </div>
                             </div>
                             <div class="card-body">
                                 <h4 class="card-title">{{item.nombre}}</h4>

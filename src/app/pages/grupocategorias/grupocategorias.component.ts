@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { CategoriaService } from '../../services/categoria.service';
-import { GrupoService } from './../../services/grupo.service';
+import {Component, OnInit} from '@angular/core';
+import {CategoriaService} from '../../services/categoria.service';
+import {GrupoService} from './../../services/grupo.service';
 import {ActivatedRoute, Router} from "@angular/router";
+import {Ng4LoadingSpinnerService} from 'ng4-loading-spinner';
+
 @Component({
   selector: 'app-grupocategorias',
   templateUrl: './grupocategorias.component.html',
@@ -29,8 +31,7 @@ export class GrupocategoriasComponent implements OnInit {
   };
 
   constructor(private categoriaService: CategoriaService,
-              private grupoService: GrupoService, private route: ActivatedRoute, private router: Router) {
-
+              private grupoService: GrupoService, private route: ActivatedRoute, private router: Router, private spinnerService: Ng4LoadingSpinnerService) {
 
 
   }
@@ -48,11 +49,14 @@ export class GrupocategoriasComponent implements OnInit {
         },
         error => {
           alert("Upss tenemos problemas de comunicación");
+        }, () => {
+          this.spinnerService.hide();
         }
       );
     });
 
   }
+
   saveCategoria() {
     this.categoriaService.crear(this.create).subscribe(
       (res: any) => {
@@ -63,14 +67,30 @@ export class GrupocategoriasComponent implements OnInit {
       }
     );
   }
+
   OpenModalEdit(item: Categoria) {
     this.edit = item;
   }
+
   GoToPage(id: number) {
     this.router.navigate(['/categoria/' + id]);
   }
-}
 
+  DeleteItem(id: number) {
+    this.spinnerService.show();
+    this.categoriaService.eliminar(id).subscribe(
+      (res: any) => {
+
+      },
+      err => {
+
+      },
+      () => {
+        this.loadCategoria();
+      }
+    );
+  }
+}
 
 
 interface Categoria {

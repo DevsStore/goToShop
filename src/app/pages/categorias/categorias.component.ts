@@ -1,24 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { CategoriaService } from '../../services/categoria.service';
-import { GrupoService } from '../../services/grupo.service';
+import {Component, OnInit} from '@angular/core';
+import {CategoriaService} from '../../services/categoria.service';
+import {GrupoService} from '../../services/grupo.service';
 import {Router, RouterLinkActive} from "@angular/router";
+import {Ng4LoadingSpinnerService} from "ng4-loading-spinner";
 
 
 @Component({
   selector: "app-categorias",
   templateUrl: "./categorias.component.html",
   styles: [
+      `
+      .my-btn {
+        border: none;
+        background: rgba(200, 200, 200, .5);
+        transition: all .3s;
+        cursor: pointer;
+      }
+
+      .my-btn:hover {
+        background: rgba(255, 255, 255, 1);
+      }
     `
-    .my-btn{
-      border:none;
-      background:rgba(200,200,200,.5);
-      transition: all .3s;
-      cursor:pointer;
-    }
-    .my-btn:hover{
-      background:rgba(255,255,255,1);
-    }
-  `
   ],
   providers: [CategoriaService, GrupoService]
 })
@@ -44,11 +46,33 @@ export class CategoriasComponent implements OnInit {
 
   constructor(private categoriaService: CategoriaService,
               private grupoService: GrupoService,
-              private route: Router) {}
+              private spinnerService: Ng4LoadingSpinnerService,
+              private route: Router) {
+  }
 
   ngOnInit() {
     this.loadCategoria();
     this.loadGrupos();
+  }
+
+  DeleteItem(id: number) {
+
+    let pregunta = confirm("Deseas realmente eliminar este item");
+    if (pregunta) {
+      this.spinnerService.show();
+      this.categoriaService.eliminar(id).subscribe(
+        (res: any) => {
+
+        },
+        err => {
+
+        },
+        () => {
+          this.loadCategoria();
+        }
+      );
+    }
+
   }
 
   loadGrupos() {
@@ -60,15 +84,18 @@ export class CategoriasComponent implements OnInit {
         alert("Upss tenemos problemas de comunicación");
       }
     );
-}
+  }
 
   loadCategoria() {
+    this.spinnerService.show();
     this.categoriaService.loadCategoria().subscribe(
       (res: Array<Categoria>) => {
         this.data = res;
       },
       error => {
         alert("Upss tenemos problemas de comunicación");
+      }, () => {
+        this.spinnerService.hide();
       }
     );
   }
@@ -78,7 +105,7 @@ export class CategoriasComponent implements OnInit {
   }
 
   saveCategoria() {
-    this.categoriaService.crear(this.create).subscribe(
+    this.categoriaService.editar(this.edit).subscribe(
       (res: any) => {
         this.loadCategoria();
       },
@@ -92,7 +119,6 @@ export class CategoriasComponent implements OnInit {
     this.route.navigate(["/categoria/" + id]);
   }
 }
-
 
 
 interface Categoria {

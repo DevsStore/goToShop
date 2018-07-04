@@ -32,6 +32,10 @@ import { CategoriaService } from "./services/categoria.service";
 import { LugarService } from './services/lugar.service';
 import { SettingsService } from './services/settings.service';
 import { ImagenService } from './services/imagen.service';
+import {Myurl} from "./services/myurl";
+
+//plugins
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 
 
 @NgModule({
@@ -56,14 +60,15 @@ import { ImagenService } from './services/imagen.service';
     CategorialugaresComponent,
     UploadimageComponent
   ],
-  imports: [BrowserModule, APP_ROUTES, HttpClientModule, FormsModule, ReactiveFormsModule],
+  imports: [BrowserModule, APP_ROUTES, HttpClientModule, FormsModule, ReactiveFormsModule, Ng4LoadingSpinnerModule.forRoot()],
   providers: [
     GrupoService,
     UsuarioService,
     CategoriaService,
     LugarService,
     SettingsService,
-    ImagenService
+    ImagenService,
+    Myurl
   ],
   bootstrap: [AppComponent]
 })

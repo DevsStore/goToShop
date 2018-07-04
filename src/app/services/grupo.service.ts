@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import {Myurl} from "./myurl";
 
 @Injectable()
 export class GrupoService {
@@ -7,25 +8,25 @@ export class GrupoService {
 
 
   listado() {
-    return this.http.get("http://gotoshopec.com/api.php/api/grupos");
+    return this.http.get(new Myurl().url + "grupos");
   }
   filtroID(id) {
-    return this.http.get("http://gotoshopec.com/api.php/api/categorias/" + id);
+    return this.http.get(new Myurl().url + "categorias/" + id);
   }
 
   crear(grupo: any) {
     return this.http.post(
-      "http://gotoshopec.com/api.php/api/grupos",
+      new Myurl().url + "grupos",
       grupo
     );
   }
   editar(grupo: any) {
     return this.http.put(
-      "http://gotoshopec.com/api.php/api/grupos/" + grupo.id,
+      new Myurl().url + "grupos/" + grupo.id,
       grupo
     );
   }
   eliminar(id: number) {
-    return this.http.delete("http://gotoshopec.com/api.php/api/grupos/" + id);
+    return this.http.delete(new Myurl().url + "grupos/" + id);
   }
 }

@@ -1,21 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { EventoService } from '../../services/evento.service';
+import {Component, OnInit} from '@angular/core';
+import {EventoService} from '../../services/evento.service';
+import {Ng4LoadingSpinnerService} from "ng4-loading-spinner";
 
 @Component({
   selector: "app-eventos",
   templateUrl: "./eventos.component.html",
   styles: [
+      `
+      .my-btn {
+        border: none;
+        background: rgba(200, 200, 200, .5);
+        transition: all .3s;
+        cursor: pointer;
+      }
+
+      .my-btn:hover {
+        background: rgba(255, 255, 255, 1);
+      }
     `
-    .my-btn{
-      border:none;
-      background:rgba(200,200,200,.5);
-      transition: all .3s;
-      cursor:pointer;
-    }
-    .my-btn:hover{
-      background:rgba(255,255,255,1);
-    }
-  `
   ],
   providers: [EventoService]
 })
@@ -51,28 +53,33 @@ export class EventosComponent implements OnInit {
     deleted_at: ""
   };
 
-  constructor(private eventoService: EventoService) {}
+  constructor(private eventoService: EventoService, private spinnerService: Ng4LoadingSpinnerService) {
+  }
 
   ngOnInit() {
     this.loadEventos();
   }
 
   loadEventos() {
+    this.spinnerService.show();
     this.eventoService.listado().subscribe(
       (res: Array<Evento>) => {
         this.data = res;
       },
       err => {
         alert("Upss tenemos problemas de comunicación");
+      }, () => {
+        this.spinnerService.hide();
       }
     );
   }
+
   OpenModalEdit(item: Evento) {
     this.edit = item;
   }
 
   saveEvento() {
-    this.eventoService.crear(this.create).subscribe(
+    this.eventoService.editar(this.edit).subscribe(
       (res: any) => {
         this.loadEventos();
       },

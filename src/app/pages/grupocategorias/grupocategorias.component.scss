@@ -7,3 +7,12 @@
 .my-btn:hover{
   background:rgba(255,255,255,1);
 }
+.my-btn-delete{
+  border:none;
+  background:rgba(255,50,50,.5);
+  transition: all .3s;
+  cursor:pointer;
+}
+.my-btn-delete:hover{
+  background:rgba(205,50,50,1);
+}

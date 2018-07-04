@@ -9,9 +9,15 @@
                         <label >Nombre de la Imagen</label>
                         <div class="input-group">
                             <div class="input-group-addon"><i class="ti-user"></i></div>
-                            <input type="text" class="form-control" name="nombre" id="inputNombre" placeholder="Nombre Imagen">
+                            <input type="text" class="form-control" name="nombre" id="inputNombre" [(ngModel)]="nombre" placeholder="Nombre Imagen">
                         </div>
                     </div>
+                  <div class="form-group">
+                    <label>Seleccione el lugar a agregar imagen</label>
+                    <select class="form-control" name="lugar" id="lugar" [(ngModel)]="lugar">
+                      <option *ngFor="let i of lugares" [value]="i.id" >{{i.razon_social}}</option>
+                    </select>
+                  </div>
                     <div class="form-group">
                         <label >Archivo</label>
                         <div class="input-group">

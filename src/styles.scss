@@ -7,3 +7,30 @@
 #themecolors a {
     cursor: pointer;
 }
+.my-btn{
+  border:none;
+  background:rgba(200,200,200,.5);
+  transition: all .3s;
+  cursor:pointer;
+  color:#fff;
+  text-shadow: #333;
+}
+.my-btn:hover{
+  background:rgba(255,255,255,1);
+  color: #333;
+}
+.my-btn-delete{
+  border:none;
+  background:rgba(255,50,50,.5);
+  transition: all .3s;
+  cursor:pointer;
+  color:#fff;
+}
+.my-btn-delete:hover{
+  background:rgba(205,50,50,1);
+  color:#fff;
+  text-shadow: #333;
+}
+.btn-block{
+  color:#fff !important;
+}

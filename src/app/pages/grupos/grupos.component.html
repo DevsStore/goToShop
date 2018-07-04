@@ -1,93 +1,100 @@
 <div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <div class="text-right">
-                    <button data-toggle="modal" data-target="#modalCreate" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="text-right">
+          <button data-toggle="modal" data-target="#modalCreate" type="button"
+                  class="btn waves-effect waves-light btn-rounded btn-primary">
             <i class="fa fa-plus"></i> Crear Grupos
           </button>
-                    <div style="margin-top:1rem"></div>
-                </div>
-                <!-- Row -->
-                <div class="row">
-                    <!-- column -->
-                    <div class="col-lg-4 col-md-6" *ngFor="let item of data" style="margin-bottom: 1rem">
-                        <!-- Card -->
-                        <div class="card" style="height: 100%">
-                            <div>
-                                <img class="card-img-top img-responsive" src="{{item.image_url}}" alt="Card image cap">
-                                <div style="position: absolute;right: 0;top: 0">
-                                    <button class="my-btn" (click)="OpenModalEdit(item)" data-toggle="modal" data-target="#modalEdit">Edit</button>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <h4 class="card-title">{{item.nombre}}</h4>
-                                <p class="card-text">Fecha de Creacion
-                                    <br/>
-                                    <span class="text-muted">{{item.created_at}}</span>
-                                </p>
-                                <p class="card-text">Última Actualizacion
-                                    <br/>
-                                    <span class="text-muted">{{item.updated_at}}</span>
-                                </p>
-
-                            </div>
-                            <div class="card-footer">
-                                <a (click)="GoToPage(item.id)" class="btn btn-primary btn-block" style="color:#fff">Mostrar categorías</a>
-                            </div>
-                        </div>
-                        <!-- Card -->
-                    </div>
-                </div>
-                <!-- Row -->
-            </div>
+          <div style="margin-top:1rem"></div>
         </div>
+        <!-- Row -->
+        <div class="row">
+          <!-- column -->
+          <div class="col-lg-4 col-md-6" *ngFor="let item of data" style="margin-bottom: 1rem">
+            <!-- Card -->
+            <div class="card" style="height: 100%">
+              <div>
+                <img class="card-img-top img-responsive" src="{{item.image_url}}" alt="Card image cap">
+                <div style="position: absolute;right: 0;top: 0">
+                  <button class="my-btn" (click)="OpenModalEdit(item)" data-toggle="modal" data-target="#modalEdit">
+                    Edit
+                  </button>
+                </div>
+                <div style="position: absolute;left: 0;top: 0">
+                  <button class="my-btn-delete" (click)="DeleteGrupo(item.id)">Delete</button>
+                </div>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title">{{item.nombre}}</h4>
+                <p class="card-text">Fecha de Creacion
+                  <br/>
+                  <span class="text-muted">{{item.created_at}}</span>
+                </p>
+                <p class="card-text">Última Actualizacion
+                  <br/>
+                  <span class="text-muted">{{item.updated_at}}</span>
+                </p>
+
+              </div>
+              <div class="card-footer">
+                <a (click)="GoToPage(item.id)" class="btn btn-primary btn-block" style="color:#fff">Mostrar
+                  categorías</a>
+              </div>
+            </div>
+            <!-- Card -->
+          </div>
+        </div>
+        <!-- Row -->
+      </div>
     </div>
+  </div>
 </div>
 
 <div class="modal" role="dialog" id="modalEdit">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Edit</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-            </div>
-            <div class="modal-body">
-                <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="edit.nombre">
-                <input type="text" class="form-control" placeholder="Url Imagen" [(ngModel)]="edit.image_url">
-                <div *ngIf="edit.image_url?.length >=1">
-                    <img src="{{edit.image_url}}" class="card-img-top img-responsive" alt="imagen de la {{edit.nombre}}">
-                </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" (click)="SaveGrupo()" data-dismiss="modal">Guardar</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            </div>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="edit.nombre">
+        <input type="text" class="form-control" placeholder="Url Imagen" [(ngModel)]="edit.image_url">
+        <div *ngIf="edit.image_url?.length >=1">
+          <img src="{{edit.image_url}}" class="card-img-top img-responsive" alt="imagen de la {{edit.nombre}}">
         </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="EditGrupo()" data-dismiss="modal">Guardar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
     </div>
+  </div>
 </div>
 <div class="modal" role="dialog" id="modalCreate">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Crear</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Crear</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-            </div>
-            <div class="modal-body">
-                <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="create.nombre">
-                <input type="text" class="form-control" placeholder="Url Imagen" [(ngModel)]="create.image_url">
-                <div *ngIf="create.image_url != ''">
-                    <img src="{{create.image_url}}" class="card-img-top img-responsive" alt="imagen de la {{create.nombre}}">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" (click)="SaveGrupo()" data-dismiss="modal">Guardar</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            </div>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="create.nombre">
+        <input type="text" class="form-control" placeholder="Url Imagen" [(ngModel)]="create.image_url">
+        <div *ngIf="create.image_url != ''">
+          <img src="{{create.image_url}}" class="card-img-top img-responsive" alt="imagen de la {{create.nombre}}">
         </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="SaveGrupo()" data-dismiss="modal">Guardar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
     </div>
+  </div>
 </div>
